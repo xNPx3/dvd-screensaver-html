@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: black;
+        }
+        :root {
+            --animation-time: 10s;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 200%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #bg-container {
+            top: 0;
+            left: 0;
+            z-index: -100;
+            position: fixed;
+        }
+
+        #bg-container #div-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            animation: marquee1 var(--animation-time) linear infinite alternate;
+        }
+
+        #bg-container #img-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            animation: marquee2 var(--animation-time) linear infinite alternate;
+        }
+
+        @keyframes marquee1 {
+            0% {
+                transform: translateX(calc(100vw - 150px));
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        @keyframes marquee2 {
+            0% {
+                transform: translateY(calc(100vh - 65.39px));
+            }
+
+            100% {
+                transform: translateY(0%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg-container">
+        <div id="div-container">
+            <div id="img-container">
+                <img src="dvd.png" width="150px" />
+            </div>
+        </div>
+        <script>
+            var min = 8;
+            var max = 16;
+            document.getElementById('div-container').style.setProperty('--animation-time', (Math.random() * (max - min) + min) + 's');
+            document.getElementById('img-container').style.setProperty('--animation-time', (Math.random() * (max - min) + min) + 's');
+        </script>
+    </div>
+</body>
+
+</html>
